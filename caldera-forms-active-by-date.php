@@ -12,13 +12,9 @@
 class CalderaFormsActiveByDate {
 	function __construct() {
 		add_action( 'caldera_forms_general_settings_panel', [ $this, 'settings' ] );
-		
-		
-		if( isset( $_GET['preview'] ) ) {
-			add_action( 'caldera_forms_submit_start', [ $this, 'submit_check' ], 10, 2 );
-			add_filter( 'caldera_forms_render_get_form', [ $this, 'render_check' ], 10, 2 );
-			add_action( 'plugins_loaded', [ $this, 'load_textdomain' ] );
-		}
+		add_action( 'caldera_forms_submit_start', [ $this, 'submit_check' ], 10, 2 );
+		add_filter( 'caldera_forms_render_get_form', [ $this, 'render_check' ], 10, 2 );
+		add_action( 'plugins_loaded', [ $this, 'load_textdomain' ] );
 	}
 	
 	public function settings( array $element ) {
